@@ -1,7 +1,7 @@
 import random
 
 rand = random.randint(1, 100)
-print("I'm thinking of a number from 1 to 100.");
+print("I'm thinking of a number from 1 to 100.")
 
 guess = -1
 
