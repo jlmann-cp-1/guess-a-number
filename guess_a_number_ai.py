@@ -7,38 +7,39 @@ high = 1000
 
 # helper functions
 def show_start_screen():
-    print("**************************")
-    print("*  Guess a Number A.I.!  *")
-    print("**************************")
+    print("*************************")
+    print("*  Guess a Number A.I!  *")
+    print("*************************")
 
 def show_credits():
-    print("This awesome game was created by Coop Dogg.")
+    pass
     
 def get_guess(current_low, current_high):
     """
-    Returns a truncated average of the current low and high
+    Return a truncated average of current low and high.
     """
     pass
 
 def pick_number():
     """
-    Ask the player to pick a number and waits until the player
-    confirms they have a number by pressing enter.
+    Ask the player to think of a number between low and high.
+    Then  wait until the player presses enter.
     """
     pass
 
 def check_guess(guess):
     """
-    Ask the player if the computer's number was too high, too low,
-    or just right.
+    Computer will ask if guess was too high, low, or correct.
 
     Returns -1 if the guess was too low
              0 if the guess was correct
              1 if the guess was too high
     """
-    pass
 
 def show_result():
+    """
+    Says the result of the game. (The computer might always win.)
+    """
     pass
 
 def play_again():
@@ -55,23 +56,23 @@ def play_again():
 def play():
     current_low = low
     current_high = high
-    result = -1
+    check = -1
     
     pick_number()
     
-    while result != 0:
+    while check != 0:
         guess = get_guess(current_low, current_high)
+        check = check_guess(guess)
 
-        result = check_guess(guess)
-
-        if result == -1:
-            # adjust current high
+        if check == -1:
+            # adjust current_low
             pass
-        elif result == 1:
-            # adjust current low
+        elif check == 1:
+            #adjust current_high
             pass
 
-    show_result()
+    show_result(guess, rand)
+
 
 # Game starts running here
 show_start_screen()
