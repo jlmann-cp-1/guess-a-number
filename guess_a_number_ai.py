@@ -68,7 +68,7 @@ def play():
             # adjust current_low
             pass
         elif check == 1:
-            #adjust current_high
+            # adjust current_high
             pass
 
     show_result(guess, rand)
