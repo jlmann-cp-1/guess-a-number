@@ -1,82 +1,89 @@
+# imports
 import random
 
 # config
 low = 1
-high = 10
-limit = 4
+high = 20
+limit = 5
 
 # helper functions
-def show_start_screen():
-    print("**************************")
-    print("**** Guess a Number ! ****")
-    print("**************************")
-
-def show_credits():
-    print("This awesome game was created by Coop Dogg.")
+def start_screen():
+    print("***********************************")
+    print("******    Guess A Number!    ******")
+    print("***********************************")
+    print()
     
-def get_guess():
-    while True:
-        guess = input("Guess a number: ")
-
-        if guess.isnumeric():
-            guess = int(guess)
-            return guess
-        else:
-            print("You must enter a number.")
-
-def pick_number():
-    print("I'm thinking of a number from " + str(low) + " to " + str(high) +".")
-
-    return random.randint(low, high)
-
-def check_guess(guess, rand):
-    if guess < rand:
-        print("You guessed too low.")
-    elif guess > rand:
-        print("You guessed too high.")
-
-def show_result(guess, rand):
-    if guess == rand:
-        print("You win!")
-    else:
-        print("You are such a loser! The number was " + str(rand) + ".")
+    input("Press 'Enter' to begin")
+    print()
+    
+def end_screen():
+    print("Bye.")
+    print("This awesome game was made by Coop Dogg.")
 
 def play_again():
     while True:
-        decision = input("Would you like to play again? (y/n) ")
+        again = input("Would you like to play again? (y/n) ")
 
-        if decision == 'y' or decision == 'yes':
+        if again == 'y':
             return True
-        elif decision == 'n' or decision == 'no':
+        elif again == 'n':
             return False
         else:
-            print("I don't understand. Please enter 'y' or 'n'.")
+            print("Invalid guess. Please enter y or n.")
+
+def pick_number():
+    print("I'm thinking of a num from " + str(low) + " to " + str(high) + ".")
+    return random.randint(low, high)
+
+def get_guess():
+    while True:
+        num = input("Take a guess: ")
+
+        if num.isnumeric():
+            num = int(num)
+            return num
+        else:
+            print("Invalid guess. Please enter a number.")
+
+def check_guess(rand, guess):
+        if guess > rand:
+            print("You guessed too high.")
+        elif guess < rand:
+            print("You guessed to low.")
+
+        if guess == rand:
+            return True
+        else:
+            return False
+    
+def show_result(got_it):
+    if got_it == True:
+        print("You got it!")
+    else:
+        print("You are such a LOSER!!!!!!!!")
+
 
 def play():
-    guess = -1
-    tries = 0
-
     rand = pick_number()
+    got_it = False
+    tries = 0
     
-    while guess != rand and tries < limit:
+    while got_it == False and tries < limit:
         guess = get_guess()
-        check_guess(guess, rand)
-
+        got_it = check_guess(rand, guess)
         tries += 1
-
-    show_result(guess, rand)
-
-
+        
+    show_result(got_it)
+    
 # Game starts running here
-show_start_screen()
+start_screen()
 
 playing = True
 
-while playing:
+while playing == True:
     play()
     playing = play_again()
 
-show_credits()
+end_screen()
 
-
-
+    
